@@ -2,9 +2,8 @@ import Script from 'next/script';
 import { FC, useEffect, useRef } from 'react';
 
 import { INITIAL_CENTER, INITIAL_ZOOM } from '@/constants';
+import { fullSizingStyled } from '@/styles/shared/util.styles';
 import type { Coordinates, NaverMap } from '@/types';
-
-import * as S from './Map.styled';
 
 interface MapProps {
 	initialCenter?: Coordinates;
@@ -33,20 +32,14 @@ const Map: FC<MapProps> = ({
 			}
 		};
 
-		/** https://navermaps.github.io/maps.js.ncp/docs/tutorial-2-Getting-Started.html */
 		const map = new window.naver.maps.Map(mapId, mapOptions);
-
 		mapRef.current = map;
 
-		if (onLoad) {
-			onLoad(map);
-		}
+		if (onLoad) onLoad(map);
 	};
 
 	useEffect(() => {
-		return () => {
-			mapRef.current?.destroy();
-		};
+		return () => mapRef.current?.destroy();
 	}, []);
 
 	return (
@@ -57,7 +50,7 @@ const Map: FC<MapProps> = ({
 				src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NCP_CLIENT_ID}`}
 				onReady={initializeMap}
 			/>
-			<S.MapStyled id={mapId} />
+			<div id={mapId} css={fullSizingStyled} />
 		</>
 	);
 };
