@@ -1,9 +1,8 @@
 import Script from 'next/script';
 import { FC, useEffect, useRef } from 'react';
 
-import { INITIAL_CENTER, INITIAL_ZOOM } from '@/constants/map';
-import { NaverMap } from '@/types/map';
-import { Coordinates } from '@/types/store';
+import { INITIAL_CENTER, INITIAL_ZOOM } from '@/constants';
+import type { Coordinates, NaverMap } from '@/types';
 
 import * as S from './Map.styled';
 

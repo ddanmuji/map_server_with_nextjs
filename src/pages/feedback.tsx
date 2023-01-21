@@ -6,6 +6,7 @@ const FeedbackPage: NextPage = () => {
 	return (
 		<>
 			<AppHeader />
+			<main></main>
 		</>
 	);
 };

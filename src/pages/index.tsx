@@ -1,12 +1,25 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { AiOutlineShareAlt } from 'react-icons/ai';
 import { VscFeedback } from 'react-icons/vsc';
 
 import { AppHeader, MapSection } from '@/components';
+import { useStores } from '@/hooks';
 import { boxStyled, fullSizingStyled, spacingStyled } from '@/styles/shared/util.styles';
+import { Store } from '@/types';
 
-const IndexPage: NextPage = () => {
+interface IndexPageProps {
+	stores: Store[];
+}
+
+const IndexPage: NextPage<IndexPageProps> = ({ stores }) => {
+	const { initializeStores } = useStores();
+
+	useEffect(() => {
+		initializeStores(stores);
+	}, [initializeStores, stores]);
+
 	return (
 		<>
 			<AppHeader
@@ -28,3 +41,12 @@ const IndexPage: NextPage = () => {
 };
 
 export default IndexPage;
+
+export async function getStaticProps() {
+	const stores = (await import('../../public/stores.json')).default;
+
+	return {
+		props: { stores },
+		revalidate: 60 * 60
+	};
+}
