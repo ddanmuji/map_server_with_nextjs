@@ -1,4 +1,5 @@
 export const SWR_KEY = {
+	CURRENT_STORE: '/current-store',
 	STORE: '/stores',
 	MAP: '/map'
 } as const;
