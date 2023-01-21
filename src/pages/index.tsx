@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { AiOutlineShareAlt } from 'react-icons/ai';
 import { VscFeedback } from 'react-icons/vsc';
 
-import { AppHeader } from '@/components';
-import { boxStyled, spacingStyled } from '@/styles/shared/util.styles';
+import { AppHeader, MapSection } from '@/components';
+import { boxStyled, fullSizingStyled, spacingStyled } from '@/styles/shared/util.styles';
 
 const IndexPage: NextPage = () => {
 	return (
@@ -20,6 +20,9 @@ const IndexPage: NextPage = () => {
 					</Link>
 				]}
 			/>
+			<main css={fullSizingStyled}>
+				<MapSection />
+			</main>
 		</>
 	);
 };

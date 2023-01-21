@@ -1,5 +1,11 @@
 import { css } from '@emotion/react';
 
+/** @description width, height 100% */
+export const fullSizingStyled = css`
+	width: 100%;
+	height: 100%;
+`;
+
 /** @description 클릭 가능한 요소에 대한 공통 스타일링 */
 export const boxStyled = css`
 	padding: 6px;
