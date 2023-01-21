@@ -5,16 +5,16 @@ import { AiOutlineShareAlt } from 'react-icons/ai';
 import { VscFeedback } from 'react-icons/vsc';
 
 import { AppHeader, MapSection } from '@/components';
-import { useStores } from '@/hooks';
+import { useStoresMutation } from '@/hooks';
 import { boxStyled, fullSizingStyled, spacingStyled } from '@/styles/shared/util.styles';
-import { Store } from '@/types';
+import type { Store } from '@/types';
 
 interface IndexPageProps {
 	stores: Store[];
 }
 
 const IndexPage: NextPage<IndexPageProps> = ({ stores }) => {
-	const { initializeStores } = useStores();
+	const { initializeStores } = useStoresMutation();
 
 	useEffect(() => {
 		initializeStores(stores);

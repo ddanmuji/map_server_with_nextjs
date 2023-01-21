@@ -1,15 +1,15 @@
 import { useCallback } from 'react';
 import { mutate } from 'swr';
 
-import { STORE_KEY } from '@/constants';
+import { SWR_KEY } from '@/constants';
 import type { Store } from '@/types';
 
-const useStores = () => {
+const useStoresMutation = () => {
 	const initializeStores = useCallback((stores: Store[]) => {
-		mutate(STORE_KEY, stores);
+		mutate(SWR_KEY.STORE, stores);
 	}, []);
 
 	return { initializeStores };
 };
 
-export default useStores;
+export default useStoresMutation;
