@@ -2,23 +2,20 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import { FC } from 'react';
-import useSWR from 'swr';
 
 import { DetailDescription } from '@/components';
-import { SWR_KEY } from '@/constants';
 import type { Store } from '@/types';
 
 interface DetailContentProps {
-	expanded: boolean;
+	expanded?: boolean;
+	store?: Store;
 }
 
-const DetailContent: FC<DetailContentProps> = ({ expanded }) => {
-	const { data: currentStore } = useSWR<Store>(SWR_KEY.CURRENT_STORE);
-
-	return currentStore ? (
+const DetailContent: FC<DetailContentProps> = ({ expanded, store }) => {
+	return store ? (
 		<Wrapper expanded={expanded}>
 			<ImageWrapper>
-				{currentStore.images.slice(0, 3).map(image => (
+				{store.images.slice(0, 3).map(image => (
 					<ImageBox key={image}>
 						<Image
 							src={image}
@@ -31,7 +28,7 @@ const DetailContent: FC<DetailContentProps> = ({ expanded }) => {
 					</ImageBox>
 				))}
 			</ImageWrapper>
-			{expanded && <DetailDescription />}
+			{expanded && <DetailDescription store={store} />}
 		</Wrapper>
 	) : null;
 };

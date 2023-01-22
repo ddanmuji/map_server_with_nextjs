@@ -1,36 +1,37 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
+import { FC } from 'react';
 import { IoCallOutline, IoLocationOutline } from 'react-icons/io5';
-import useSWR from 'swr';
 
 import Naver from '@/assets/images/naver.png';
-import { SWR_KEY } from '@/constants';
 import type { Store } from '@/types';
 
-const DetailDescription = () => {
-	const { data: currentStore } = useSWR<Store>(SWR_KEY.CURRENT_STORE);
+interface DetailDescriptionProps {
+	store?: Store;
+}
 
-	return currentStore ? (
+const DetailDescription: FC<DetailDescriptionProps> = ({ store }) => {
+	return store ? (
 		<>
 			<DescriptionWrapper>
 				<Title>설명</Title>
-				<Description>{currentStore.description}</Description>
+				<Description>{store.description}</Description>
 			</DescriptionWrapper>
 			<Divider />
 			<BasicInfo>
 				<Title>기본 정보</Title>
 				<div className="address">
 					<IoLocationOutline size={20} />
-					<span>{currentStore.address || '정보가 없습니다.'}</span>
+					<span>{store.address || '정보가 없습니다.'}</span>
 				</div>
 				<div className="phone">
 					<IoCallOutline size={20} />
-					<span>{currentStore.phone || '정보가 없습니다.'}</span>
+					<span>{store.phone || '정보가 없습니다.'}</span>
 				</div>
 				<div className="naverUrl">
 					<Image src={Naver} width={20} height={20} alt="" />
 					<Anchor
-						href={`https://pcmap.place.naver.com/restaurant/${currentStore.nid}/home`}
+						href={`https://pcmap.place.naver.com/restaurant/${store.nid}/home`}
 						target="_blank"
 						rel="noreferrer noopener"
 					>
@@ -42,7 +43,7 @@ const DetailDescription = () => {
 			<MenuWrapper>
 				<Title>메뉴</Title>
 				<MenuList>
-					{currentStore.menus?.map(menu => (
+					{store.menus?.map(menu => (
 						<Menu key={menu.name}>
 							<Name>{menu.name}</Name>
 							<Price>{menu.price}</Price>

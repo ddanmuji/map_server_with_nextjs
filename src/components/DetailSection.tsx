@@ -1,12 +1,10 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import { IoIosArrowUp } from 'react-icons/io';
 import useSWR from 'swr';
 
-import { DetailContent } from '@/components';
+import { DetailContent, DetailHeader } from '@/components';
 import { SWR_KEY } from '@/constants';
-import { HEADER_HEIGHT, SECTION_PADDING_TOP } from '@/styles/shared/constants';
+import { detailSectionStyled } from '@/styles/shared/util.styles';
 import type { Store } from '@/types';
 
 const DetailSection = () => {
@@ -17,91 +15,13 @@ const DetailSection = () => {
 
 	return (
 		<Wrapper expanded={expanded} selected={Boolean(currentStore)}>
-			<Header>
-				<Button expanded={expanded} onClick={onToggleExpanded} disabled={!currentStore}>
-					<IoIosArrowUp size={20} color="#666666" />
-				</Button>
-				{<Title>{currentStore ? currentStore.name : '매장을 선택해주세요'}</Title>}
-			</Header>
-			<DetailContent expanded={expanded} />
+			<DetailHeader expanded={expanded} onClickArrow={onToggleExpanded} store={currentStore} />
+			<DetailContent expanded={expanded} store={currentStore} />
 		</Wrapper>
 	);
 };
 export default DetailSection;
 
 const Wrapper = styled.div<{ expanded?: boolean; selected?: boolean }>`
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 101;
-	padding: ${SECTION_PADDING_TOP} 16px 16px;
-	box-sizing: border-box;
-	background-color: #ffffff;
-	border-top-left-radius: 24px;
-	border-top-right-radius: 24px;
-	box-shadow: 0 -2px 8px 0 rgba(136, 136, 136, 0.3);
-	transition: transform 500ms ease-out;
-	transform: translateY(calc(100% - ${HEADER_HEIGHT} - ${SECTION_PADDING_TOP}));
-	display: flex;
-	flex-direction: column;
-	color: #444444;
-
-	${({ expanded }) =>
-		expanded &&
-		css`
-			transform: translateY(0) !important;
-		`}
-
-	${({ selected }) =>
-		selected &&
-		css`
-			transform: translateY(calc(100% - 160px));
-		`}
-`;
-
-const Header = styled.div`
-	height: ${HEADER_HEIGHT};
-	display: flex;
-	flex-direction: column;
-`;
-
-const Button = styled.button<{ expanded?: boolean }>`
-	height: 20px;
-	align-self: center;
-	border: none;
-	background-color: transparent;
-	cursor: pointer;
-	transition: transform 150ms ease-out;
-
-	&:disabled {
-		opacity: 0.2;
-		cursor: not-allowed;
-	}
-
-	svg {
-		animation: bounce 500ms infinite alternate ease-in;
-	}
-
-	${({ expanded }) =>
-		expanded &&
-		css`
-			transform: rotate(180deg);
-		`}
-
-	@keyframes bounce {
-		from {
-			transform: translateY(0);
-		}
-		to {
-			transform: translateY(-5px);
-		}
-	}
-`;
-
-const Title = styled.h4`
-	margin: 4px 0;
-	font-size: 1rem;
-	font-weight: 500;
+	${({ expanded, selected }) => detailSectionStyled(expanded, selected)}
 `;
