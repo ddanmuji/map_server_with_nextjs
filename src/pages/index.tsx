@@ -21,7 +21,11 @@ const IndexPage: NextPage<IndexPageProps> = ({ stores }) => {
 
 	return (
 		<>
-			<NextSeo title="매장 지도" description="간단한 위치찾기 서비스 With Next.js" />
+			<NextSeo
+				title="매장 지도"
+				description="간단한 위치찾기 서비스 With Next.js"
+				// canonical={process.env.NEXT_PUBLIC_SITE_URL}
+			/>
 			<HomeHeader />
 			<main
 				css={css`
