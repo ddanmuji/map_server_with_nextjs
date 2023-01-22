@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { IoIosArrowUp } from 'react-icons/io';
 import useSWR from 'swr';
 
+import { DetailContent } from '@/components';
 import { SWR_KEY } from '@/constants';
 import { HEADER_HEIGHT, SECTION_PADDING_TOP } from '@/styles/shared/constants';
 import type { Store } from '@/types';
@@ -22,6 +23,7 @@ const DetailSection = () => {
 				</Button>
 				{<Title>{currentStore ? currentStore.name : '매장을 선택해주세요'}</Title>}
 			</Header>
+			<DetailContent expanded={expanded} />
 		</Wrapper>
 	);
 };
@@ -42,6 +44,9 @@ const Wrapper = styled.div<{ expanded?: boolean; selected?: boolean }>`
 	box-shadow: 0 -2px 8px 0 rgba(136, 136, 136, 0.3);
 	transition: transform 500ms ease-out;
 	transform: translateY(calc(100% - ${HEADER_HEIGHT} - ${SECTION_PADDING_TOP}));
+	display: flex;
+	flex-direction: column;
+	color: #444444;
 
 	${({ expanded }) =>
 		expanded &&

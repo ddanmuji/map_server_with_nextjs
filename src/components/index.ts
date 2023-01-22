@@ -1,4 +1,6 @@
 export { default as AppHeader } from './AppHeader';
+export { default as DetailContent } from './DetailContent';
+export { default as DetailDescription } from './DetailDescription';
 export { default as DetailSection } from './DetailSection';
 export { default as HomeHeader } from './HomeHeader';
 export { default as Map } from './Map';
