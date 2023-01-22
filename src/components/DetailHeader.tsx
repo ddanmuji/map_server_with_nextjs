@@ -20,13 +20,18 @@ const DetailHeader: FC<DetailHeader> = ({ expanded, onClickArrow, store }) => {
 
 	return (
 		<Header>
-			<Button expanded={expanded} onClick={onClickArrow} disabled={!store}>
+			<Button
+				expanded={expanded}
+				onClick={onClickArrow}
+				disabled={!store}
+				aria-label={expanded ? '매장 정보 접기' : '매장 정보 펼치기'}
+			>
 				<IoIosArrowUp size={20} color="#666666" />
 			</Button>
 			{store ? (
 				<FlexRow>
 					<Title>{store.name}</Title>
-					<button css={boxStyled} onClick={onCopyUrl}>
+					<button css={boxStyled} onClick={onCopyUrl} aria-label="매장 페이지 주소 클립보드 복사">
 						<AiOutlineShareAlt size={20} />
 					</button>
 				</FlexRow>

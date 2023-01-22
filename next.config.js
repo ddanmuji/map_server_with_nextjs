@@ -10,6 +10,10 @@ const nextConfig = {
 			autoLabel: 'dev-only',
 			labelFormat: '[local]'
 		}
+	},
+	i18n: {
+		locales: ['ko'],
+		defaultLocale: 'ko'
 	}
 };
 

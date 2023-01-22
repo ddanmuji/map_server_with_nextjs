@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
 import { useEffect } from 'react';
 
 import { DetailSection, HomeHeader, MapSection } from '@/components';
@@ -20,6 +21,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ stores }) => {
 
 	return (
 		<>
+			<NextSeo title="매장 지도" description="간단한 위치찾기 서비스 With Next.js" />
 			<HomeHeader />
 			<main
 				css={css`

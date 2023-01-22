@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 
 import { DetailContent, DetailHeader } from '@/components';
 import { useCurrentStoreMutation } from '@/hooks';
@@ -22,10 +23,13 @@ const StoreDetailPage: NextPage<StoreDetailPageProps> = ({ store }) => {
 	};
 
 	return (
-		<div css={detailSectionStyled(true, Boolean(store))}>
-			<DetailHeader expanded onClickArrow={onMoveToMap} store={store} />
-			<DetailContent expanded store={store} />
-		</div>
+		<>
+			<NextSeo title={store.name} description={store.description} />
+			<div css={detailSectionStyled(true, Boolean(store))}>
+				<DetailHeader expanded onClickArrow={onMoveToMap} store={store} />
+				<DetailContent expanded store={store} />
+			</div>
+		</>
 	);
 };
 

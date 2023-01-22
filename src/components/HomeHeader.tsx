@@ -26,11 +26,21 @@ const HomeHeader = () => {
 		<AppHeader
 			onClickLogo={resetMapOptions}
 			rightElement={[
-				<button key="copy" css={boxStyled} onClick={onClickShareUrl}>
+				<button
+					key="copy"
+					css={boxStyled}
+					onClick={onClickShareUrl}
+					aria-label="현재 위치 클립보드 복사"
+				>
 					<AiOutlineShareAlt size={20} />
 				</button>,
 				<div key="spacing" css={spacingStyled()} />,
-				<Link key="link" href={ROUTER_PATH.FEEDBACK} css={boxStyled}>
+				<Link
+					key="link"
+					href={ROUTER_PATH.FEEDBACK}
+					css={boxStyled}
+					aria-label="피드백 페이지로 이동"
+				>
 					<VscFeedback size={20} />
 				</Link>
 			]}

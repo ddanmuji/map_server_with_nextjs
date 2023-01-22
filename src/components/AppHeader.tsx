@@ -16,7 +16,12 @@ const AppHeader: FC<AppHeaderProps> = ({ rightElement, onClickLogo }) => {
 	return (
 		<Header>
 			<FlexItem>
-				<Link href={ROUTER_PATH.HOME} onClick={onClickLogo} css={boxStyled}>
+				<Link
+					href={ROUTER_PATH.HOME}
+					onClick={onClickLogo}
+					css={boxStyled}
+					aria-label="홈으로 이동"
+				>
 					<Image src={logoSrc} width={110} height={20} alt="logo" placeholder="blur" />
 				</Link>
 			</FlexItem>
