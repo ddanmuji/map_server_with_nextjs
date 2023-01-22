@@ -10,12 +10,14 @@ import type { Store } from '@/types';
 
 const DetailSection = () => {
 	const { data: currentStore } = useSWR<Store>(SWR_KEY.CURRENT_STORE);
+
 	const [expanded, setExpanded] = useState(false);
+	const onToggleExpanded = () => setExpanded(prev => !prev);
 
 	return (
 		<Wrapper expanded={expanded} selected={Boolean(currentStore)}>
 			<Header>
-				<Button onClick={() => setExpanded(!expanded)} disabled={!currentStore}>
+				<Button expanded={expanded} onClick={onToggleExpanded} disabled={!currentStore}>
 					<IoIosArrowUp size={20} color="#666666" />
 				</Button>
 				{<Title>{currentStore ? currentStore.name : '매장을 선택해주세요'}</Title>}
@@ -34,17 +36,17 @@ const Wrapper = styled.div<{ expanded?: boolean; selected?: boolean }>`
 	z-index: 101;
 	padding: ${SECTION_PADDING_TOP} 16px 16px;
 	box-sizing: border-box;
-	background-color: white;
+	background-color: #ffffff;
 	border-top-left-radius: 24px;
 	border-top-right-radius: 24px;
 	box-shadow: 0 -2px 8px 0 rgba(136, 136, 136, 0.3);
-	transition: transform 800ms;
+	transition: transform 500ms ease-out;
 	transform: translateY(calc(100% - ${HEADER_HEIGHT} - ${SECTION_PADDING_TOP}));
 
 	${({ expanded }) =>
 		expanded &&
 		css`
-			transform: translateY(0);
+			transform: translateY(0) !important;
 		`}
 
 	${({ selected }) =>
@@ -65,13 +67,15 @@ const Button = styled.button<{ expanded?: boolean }>`
 	align-self: center;
 	border: none;
 	background-color: transparent;
+	cursor: pointer;
+	transition: transform 150ms ease-out;
 
 	&:disabled {
 		opacity: 0.2;
 		cursor: not-allowed;
 	}
 
-	> svg {
+	svg {
 		animation: bounce 500ms infinite alternate ease-in;
 	}
 

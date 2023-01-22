@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { NextPage } from 'next';
 import { useEffect } from 'react';
 
@@ -20,7 +21,13 @@ const IndexPage: NextPage<IndexPageProps> = ({ stores }) => {
 	return (
 		<>
 			<HomeHeader />
-			<main css={{ ...fullSizingStyled, position: 'relative' }}>
+			<main
+				css={css`
+					${fullSizingStyled}
+					position: relative;
+					overflow: hidden;
+				`}
+			>
 				<MapSection />
 				<DetailSection />
 			</main>
