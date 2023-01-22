@@ -32,7 +32,7 @@ const DetailHeader: FC<DetailHeader> = ({ expanded, onClickArrow, store }) => {
 				<FlexRow>
 					<Title>{store.name}</Title>
 					<button css={boxStyled} onClick={onCopyUrl} aria-label="매장 페이지 주소 클립보드 복사">
-						<AiOutlineShareAlt size={20} />
+						<AiOutlineShareAlt size={20} color="#666666" />
 					</button>
 				</FlexRow>
 			) : (

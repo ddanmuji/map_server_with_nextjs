@@ -22,7 +22,7 @@ const AppHeader: FC<AppHeaderProps> = ({ rightElement, onClickLogo }) => {
 					css={boxStyled}
 					aria-label="홈으로 이동"
 				>
-					<Image src={logoSrc} width={110} height={20} alt="logo" placeholder="blur" />
+					<Image src={logoSrc} width={110} height={20} alt="logo" placeholder="blur" priority />
 				</Link>
 			</FlexItem>
 			{rightElement && <FlexItem>{rightElement}</FlexItem>}

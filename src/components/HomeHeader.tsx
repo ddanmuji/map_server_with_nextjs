@@ -32,7 +32,7 @@ const HomeHeader = () => {
 					onClick={onClickShareUrl}
 					aria-label="현재 위치 클립보드 복사"
 				>
-					<AiOutlineShareAlt size={20} />
+					<AiOutlineShareAlt size={20} color="#444444" />
 				</button>,
 				<div key="spacing" css={spacingStyled()} />,
 				<Link
@@ -41,7 +41,7 @@ const HomeHeader = () => {
 					css={boxStyled}
 					aria-label="피드백 페이지로 이동"
 				>
-					<VscFeedback size={20} />
+					<VscFeedback size={20} color="#444444" />
 				</Link>
 			]}
 		/>

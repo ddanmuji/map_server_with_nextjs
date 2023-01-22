@@ -13,7 +13,7 @@ const styles = css`
 
 	@layer base {
 		#__next {
-			display: contents;
+			${fullSizingStyled}
 		}
 	}
 

@@ -25,6 +25,7 @@ const DetailContent: FC<DetailContentProps> = ({ expanded, store }) => {
 							sizes="120px"
 							placeholder="blur"
 							blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO0WhFsDwADzwF2mLYSJgAAAABJRU5ErkJggg=="
+							priority
 						/>
 					</ImageBox>
 				))}
