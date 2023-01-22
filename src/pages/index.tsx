@@ -25,6 +25,7 @@ const IndexPage: NextPage<IndexPageProps> = ({ stores }) => {
 				title="매장 지도"
 				description="간단한 위치찾기 서비스 With Next.js"
 				// canonical={process.env.NEXT_PUBLIC_SITE_URL}
+				openGraph={{ url: process.env.NEXT_PUBLIC_SITE_URL }}
 			/>
 			<HomeHeader />
 			<main
@@ -44,7 +45,8 @@ const IndexPage: NextPage<IndexPageProps> = ({ stores }) => {
 export default IndexPage;
 
 export async function getStaticProps() {
-	const stores = (await import('../../public/stores.json')).default;
+	const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stores`);
+	const stores = await response.json();
 
 	return {
 		props: { stores },

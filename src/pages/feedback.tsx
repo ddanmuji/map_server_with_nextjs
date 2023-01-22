@@ -10,6 +10,7 @@ const FeedbackPage: NextPage = () => {
 				title="피드백"
 				description="피드백 페이지 입니다 :D"
 				// canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/feedback`}
+				openGraph={{ url: `${process.env.NEXT_PUBLIC_SITE_URL}/feedback` }}
 			/>
 			<AppHeader />
 			<main></main>

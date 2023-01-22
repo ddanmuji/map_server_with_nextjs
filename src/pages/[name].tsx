@@ -28,6 +28,7 @@ const StoreDetailPage: NextPage<StoreDetailPageProps> = ({ store }) => {
 				title={store.name}
 				description={store.description}
 				// canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/${store.name}`}
+				openGraph={{ url: `${process.env.NEXT_PUBLIC_SITE_URL}/${store.name}` }}
 			/>
 			<div css={detailSectionStyled(true, Boolean(store))}>
 				<DetailHeader expanded onClickArrow={onMoveToMap} store={store} />

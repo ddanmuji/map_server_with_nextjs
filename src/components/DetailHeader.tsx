@@ -89,7 +89,7 @@ const FlexRow = styled.div`
 	align-items: center;
 `;
 
-const Title = styled.h4`
+const Title = styled.h1`
 	margin: 4px 0;
 	font-size: 1rem;
 	font-weight: 500;
