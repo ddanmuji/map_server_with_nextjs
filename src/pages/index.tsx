@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useEffect } from 'react';
 
-import { HomeHeader, MapSection } from '@/components';
+import { DetailSection, HomeHeader, MapSection } from '@/components';
 import { useStoresMutation } from '@/hooks';
 import { fullSizingStyled } from '@/styles/shared/util.styles';
 import type { Store } from '@/types';
@@ -20,8 +20,9 @@ const IndexPage: NextPage<IndexPageProps> = ({ stores }) => {
 	return (
 		<>
 			<HomeHeader />
-			<main css={fullSizingStyled}>
+			<main css={{ ...fullSizingStyled, position: 'relative' }}>
 				<MapSection />
+				<DetailSection />
 			</main>
 		</>
 	);
